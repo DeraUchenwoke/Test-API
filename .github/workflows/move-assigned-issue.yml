@@ -11,11 +11,12 @@ jobs:
     runs-on: [self-hosted, windows, x64]
     steps:
           - name: Move assigned issues to in progress
-            uses: DeraUchenwoke/Test-API@main
+          - uses: checkout/actions@v1
+          - uses: ./.github/workflows/move-assigned-issue
             with:
               project: 'REST-API-Project'
               column: 'In progress'
-              owner: 'DeraUchenwoke'
-              repo: 'Test-API'
               github_token: ${{ secrets.GITHUB_TOKEN }}
               branch: main
+
+                          
