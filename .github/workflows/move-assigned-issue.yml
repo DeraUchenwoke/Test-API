@@ -1,11 +1,11 @@
 name: Move assigned issue card 
 
-# Deals with only assigned issues 
+# Deals with only assigned issues.
 on: 
   issues:
     types: [opened]
 
-# Moves 
+# Moves issue card to in progress.
 jobs:
   move-assigned-issue-card:
     runs-on: [self-hosted, windows, x64]
@@ -14,5 +14,5 @@ jobs:
         with: 
           project: REST-API-Project
           column: In progress
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }} 
       
