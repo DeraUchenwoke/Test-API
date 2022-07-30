@@ -13,10 +13,4 @@ jobs:
           - name: Move assigned issues to in progress
           - uses: checkout/actions@v1
           - uses: ./.github/workflows/move-assigned-issue
-            with:
-              project: 'REST-API-Project'
-              column: 'In progress'
-              github_token: ${{ secrets.GITHUB_TOKEN }}
-              branch: main
-
                           
