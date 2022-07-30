@@ -5,14 +5,17 @@ on:
   issues:
     types: [opened]
 
-# Moves issue card to in progress.
+# Moves opened issue card to in progress column.
 jobs:
   move-assigned-issue-card:
     runs-on: [self-hosted, windows, x64]
     steps:
-      - uses: alex-page/github-project-automation-plus@v0.8.1
-        with:
-          repo: 'Test-API'
-          project: 'REST-API-Project'
-          column: 'In progress'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          - name: Move assigned issues to in progress
+            uses: fojia/action-move-issues-to-column@master
+            with:
+              project: 'REST-API-Project'
+              column: 'In progress'
+              owner: 'fojia'
+              repo: 'Test-API'
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              branch: main
