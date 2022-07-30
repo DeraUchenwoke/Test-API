@@ -14,4 +14,4 @@ jobs:
       with:
         project: REST-API-Project
         column: In Progress
-        repo-token: ${{ secrets.DERA_SECRET }}
+        DERA_SECRET: ${{ secrets.DERA_SECRET }}
