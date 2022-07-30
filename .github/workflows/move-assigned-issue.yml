@@ -3,7 +3,7 @@ name: Move assigned issue card
 # Deals with only assigned issues 
 on: 
   issues:
-    types: [assigned]
+    types: [opened]
 
 # Moves 
 jobs:
