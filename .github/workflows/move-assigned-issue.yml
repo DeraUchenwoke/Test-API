@@ -8,6 +8,10 @@ on:
 # Moves issue card to in progress.
 jobs:
   move-assigned-issue-card:
+    permissions:
+      issues: write
+      pull-requests: write 
+      contents: write 
     runs-on: [self-hosted, windows, x64]
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.1
