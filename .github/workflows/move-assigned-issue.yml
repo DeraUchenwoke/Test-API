@@ -14,5 +14,5 @@ jobs:
         with: 
           project: REST-API-Project
           column: In progress
-          repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }} 
+          repo-token: ${{ secrets.DERA_SECRET }} 
       
