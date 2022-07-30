@@ -11,7 +11,7 @@ jobs:
     runs-on: [self-hosted, windows, x64]
     steps:
           - name: Move assigned issues to in progress
-            uses: DeraUchenwoke/move-assigned-issue@main
+            uses: DeraUchenwoke/Test-API/.github/workflows/move-assigned-issue@main
             with:
               project: 'REST-API-Project'
               column: 'In progress'
