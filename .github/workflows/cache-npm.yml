@@ -36,10 +36,10 @@ jobs:
         run: npm list
         
       - name: Initialise package.json file 
-        run: npm init <pkg>
+        run: npm init 
 
       - name: Install dependencies
-        run: npm install
+        run: npm install axios@0.27.2 --save
 
       
   
