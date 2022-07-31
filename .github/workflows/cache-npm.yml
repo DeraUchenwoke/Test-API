@@ -1,43 +1,44 @@
 name: cache npm
-on: pull
-jobs: 
-  runs-on: [self-hosted, windows, x64]
-  steps: 
-  - uses: actions/checkout@v3 
-  
-  - name: Setup Node.js 
-  - uses: actions/setup-node@v3 
-    with: 
-      node-version: 16.16.0
-   
+on: pull_request
+jobs:
+  build:
+    runs-on: [self-hosted, windows, x64]
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js 
+      - uses: actions/setup-node@v3 
+        with: 
+          node-version: 16.16.0
+          
   # Caching these reduces download time.
   # Dependencies are fetched from Github's cloud instead in one go.
-  # Path for windows is: %AppData%/npm-cache for macOS/Linux it is: ./~npm.
+  # Path for windows is: %AppData%/npm-cache for macOS/Linux it is: ~/.npm.
+  # See 'https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows' 
+  # 'npm ci' - clean install exact version dependencies - therefore faster than 'npm install'.
+  # Holds true if a 'package-lock.json' file exists in the project already.
   
-  - name: Cache node modules
-  - uses: actions/cache@v3 
-    env:
-      cache-name: cache-node-modules
-    with: 
-      path: %AppData%/npm-cache 
-      key: ${{ runner.os }}-build-${{ env.cache-name}}-${{ hashFiles('**/package.json') }}
-      restore-keys: |
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-            
-   # See 'https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows'          
-            
-    - if: ${{ steps.cache-npm.outputs.cache-hit == 'false' }}
+
+      - if: ${{ steps.cache-npm.outputs.cache-hit == 'false' }}
         name: List the state of node modules
         continue-on-error: true
         run: npm list
-                   
-   # 'npm ci' - clean install exact version dependencies - therefore faster than 'npm install'.
-   # Holds true if a 'package-lock.json' file exists in the project already.
-  
-  - name: Install dependencies
-    run: npm install
-      
+
+      - name: Install dependencies
+        run: npm install
+
       
   
