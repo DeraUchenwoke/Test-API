@@ -36,7 +36,10 @@ jobs:
         run: npm list
         
       - name: Make directory for npm package
-        run: mkdir my-npm-pkg && cd my-npm-pkg
+        run: mkdir my-npm-pkg
+        
+      - name: Change to directory
+        run: cd my-npm-pkg
         
       - name: Initialise package.json
         run: npm init
