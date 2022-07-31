@@ -1,5 +1,5 @@
 name: cache npm
-on: fork
+on: pull_request
 jobs:
   build:
     runs-on: [self-hosted, windows, x64]
@@ -44,8 +44,18 @@ jobs:
       - name: Initialise package.json
         run: npm init -y
 
-      - name: Install dependencies
+      - name: Install AXIOS dependencies
         run: npm install axios@0.27.2 --save
+      
+      - name: Install CHEERIO dependencies 
+        run: npm install cheerio@1.0.0-rc.12 --save
+        
+      - name: Install EXPRESS dependencies 
+        run: npm install express@4.18.1 --save
+        
+      - name: Install MONGOOSE dependencies
+        run: npm install mongoose@6.5.0 --save
+        
 
       
   
