@@ -1,5 +1,5 @@
 name: cache npm
-on: pull_request
+on: fork
 jobs:
   build:
     runs-on: [self-hosted, windows, x64]
