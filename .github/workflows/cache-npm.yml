@@ -35,8 +35,8 @@ jobs:
         continue-on-error: true
         run: npm list
         
-      - name: Initialise package.json file 
-        run: npm init
+      - name: Initialise and update package.json file 
+        run: $ npm init -w packages/a
 
       - name: Install dependencies
         run: npm install
