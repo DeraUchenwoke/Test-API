@@ -15,8 +15,6 @@ jobs:
   # Dependencies are fetched from Github's cloud instead in one go.
   # Path for windows is: %AppData%/npm-cache for macOS/Linux it is: ~/.npm.
   # See 'https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows' 
-  # 'npm ci' - clean install exact version dependencies - therefore faster than 'npm install'.
-  # Holds true if a 'package-lock.json' file exists in the project already.
   
       - name: Cache node modules
         id: cache-npm
