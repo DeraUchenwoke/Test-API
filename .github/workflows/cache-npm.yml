@@ -45,16 +45,16 @@ jobs:
         run: npm init -y
 
       - name: Install AXIOS dependencies
-        run: npm ci axios@0.27.2 --save
+        run: npm install axios@0.27.2 --save
       
       - name: Install CHEERIO dependencies 
-        run: npm ci cheerio@1.0.0-rc.12 --save
+        run: npm install cheerio@1.0.0-rc.12 --save
         
       - name: Install EXPRESS dependencies 
-        run: npm ci express@4.18.1 --save
+        run: npm install express@4.18.1 --save
         
       - name: Install MONGOOSE dependencies
-        run: npm ci mongoose@6.5.0 --save
+        run: npm install mongoose@6.5.0 --save
         
 
       
