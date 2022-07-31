@@ -35,8 +35,11 @@ jobs:
         continue-on-error: true
         run: npm list
         
-      - name: Initialise package.json file 
-        run: npm init 
+      - name: Make directory for npm package
+        run: mkdir my-npm-pkg && cd my-npm-pkg
+        
+      - name: Initialise package.json
+        run: npm init
 
       - name: Install dependencies
         run: npm install axios@0.27.2 --save
